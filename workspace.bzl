@@ -1,8 +1,7 @@
 load('@bazel_tools//tools/build_defs/repo:git.bzl', 'git_repository')
 
 def kafka_example_workspace(workflow_tag=None, workflow_commit=None, workflow_path=None,
-                            coke_tag=None, coke_commit=None, coke_path=None,
-                            common_commit=None):
+                            coke_tag=None, coke_commit=None, coke_path=None):
     if workflow_path:
         native.local_repository(
             name = "workflow",
@@ -27,11 +26,4 @@ def kafka_example_workspace(workflow_tag=None, workflow_commit=None, workflow_pa
             remote = "https://github.com/kedixa/coke.git",
             tag = coke_tag,
             commit = coke_commit,
-        )
-
-    if common_commit:
-        git_repository(
-            name = "common",
-            remote = "https://github.com/coke-playground/common.git",
-            commit = common_commit,
         )
